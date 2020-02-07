@@ -6,7 +6,7 @@ class M_order extends My_model {
 
     public function __construct() {
         parent::__construct();
-        $this->table = 'order';
+        $this->table = 'detail_order';
     }
 
     public function rules()
@@ -26,38 +26,9 @@ class M_order extends My_model {
         ];
     }
 
-    public function add()
+    public function editSome($id,$data)
     {
-        $post = $this->input->post();
-        $data = [
-            'id_order' => time(),
-            'nama_order' => ucfirst($post['order']),
-            'harga' => $post['harga'],
-            'berat' => $post['berat'],
-            'deskripsi' => $post['deskripsi'],
-            'foto' => $this->uploadImage(time())
-        ];
-
-        $this->db->insert($this->table,$data);
-    }
-
-    public function edit($id)
-    {
-        $post = $this->input->post();
-        $data = [
-            'nama_order' => ucfirst($post['order']),
-            'harga' => $post['harga'],
-            'berat' => $post['berat'],
-            'deskripsi' => $post['deskripsi']
-        ];
-
-        if (!empty($_FILES["foto"]["name"])) {
-            $data['foto'] = $this->uploadImage($id);
-        } else {
-            $data['foto'] = $post["old_foto"];
-        }
-
-        $this->db->where(['id_order' => $id]);
+        $this->db->where(["order_kode" => $id]);
         $this->db->update($this->table,$data);
     }
 

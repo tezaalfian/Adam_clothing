@@ -16,10 +16,13 @@
         <div id="content">
             <div class="container py-md-4 py-2">
                 <div class="row">
-                    <div class="col-md-12 border-right">
+                    <div class="col-md-12">
                         <h4 class="text-danger"><b>Keranjang</b></h4>
+                        <div class="flash-data" data="<?= $this->session->flashdata('success') ?>"></div>
+                        <div class="flash-error" data="<?= $this->session->flashdata('error') ?>"></div>
                     </div>
                 </div>
+                <?php if(isset($keranjang)) { ?>
                 <div class="row">
                 <?php $total = 0; ?>
                 <?php foreach ($keranjang as $key) : ?>
@@ -56,11 +59,25 @@
                     <ul class="list-group list-group-flush">
                         <li class="mini-list list-group-item d-flex justify-content-between align-items-center bg-transparent">
                             <span>Total : <b class="text-danger">Rp. <?= number_format($total) ?></b></span>
-                            <a href="#" class="btn btn-danger">Checkout</a>
+                            <a href="<?= base_url('order/send/'.$keranjang[0]['kode']) ?>" class="btn btn-danger">Checkout</a>
                         </li>
                     </ul>
                     </div>
                 </div>
+                <?php } else {?>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col-md-4 text-center">
+                            <img width="100%" src="<?= base_url('assets/client/img/kosong.png') ?>" alt="">
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <span class="text-warning"><b>Keranjang anda kosong!</b></span>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </div>
         <?php $this->load->view('client/partial/footer') ?>
@@ -113,7 +130,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                    <a href="" class="btn btn-danger">Submit</a>
+                    <a href="" class="btn btn-danger conDelete">Submit</a>
                 </div>
                 </div>
             </div>
@@ -143,11 +160,6 @@
             });
         }
 
-        $('.hapus').click(function(){
-            kode = $(this).attr('nilai');
-            $('.delete').attr('href', '<?= base_url('admin/produk/delete/') ?>'+kode);
-        });
-
         $('.edit').click(function() {
             $.ajax({
                 type: "post",
@@ -156,7 +168,7 @@
                 dataType: "json",
                 success: function (result) {
                     $('.jumlah').val(result.jumlah);
-                    $('.jumlah').attr('max',result.stok);
+                    // $('.jumlah').attr('max',result.stok);
                     $('.ukuran').val(result.ukuran);
                     $('.form_edit').attr('action','<?= base_url('order/editcart/') ?>'+result.id_order);
                 }
@@ -170,7 +182,7 @@
                 data: {id: $(this).attr('data')},
                 dataType: "json",
                 success: function (result) {
-                    console.log(result);
+                    $('.conDelete').attr('href','<?= base_url('order/deleteCart/') ?>'+result.id_order);
                 }
             });
         })

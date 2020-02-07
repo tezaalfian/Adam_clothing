@@ -19,6 +19,14 @@ class M_produk extends My_model {
         ];
     }
 
+    public function getId($id)
+    {
+        $this->db->select('kategori.*, produk.*, produk.foto AS foto_produk', FALSE);
+        $this->db->join('kategori', 'produk.kategori_id = kategori.id_kategori');
+        $this->db->where(['kategori_id' => $id]);
+        return $this->db->get($this->table)->row_array();
+    }
+
     public function getAll()
     {
         $this->db->select('kategori.*, produk.*, produk.foto AS foto_produk', FALSE);
