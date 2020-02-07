@@ -36,6 +36,8 @@
                     <div class="col-md-9 mt-3">
                         <div class="row">
                             <div class="col-12">
+                                <div class="flash-data" data="<?= $this->session->flashdata('success') ?>"></div>
+                                <div class="flash-error" data="<?= $this->session->flashdata('error') ?>"></div>
                                 <h4 class="text-danger"><b>Detail Produk</b></h4>
                             </div>
                         </div>
@@ -63,13 +65,14 @@
                                 <div class="card">
                                     <img src="<?= base_url('upload/produk/'.$key['foto']) ?>" class="card-img-top <?= $key['stok'] == 0 ? 'empty':'' ?>" alt="...">
                                     <div class="card-body tipe-produk">
-                                        <!-- <form> -->
+                                        <form method="post" action="<?= base_url('order/tipe/'.$kategori['id_kategori']) ?>">
                                             <div class="form-row align-items-center">
                                                 <div class="col-12">
-                                                    <input min="1" max="<?= $key['stok'] ?>" type="number" class="form-control mb-2 mini-form jumlah" required>
+                                                    <input min="1" max="<?= $key['stok'] ?>" type="number" placeholder="Jumlah" class="form-control mb-2 mini-form" name="jumlah" <?= $key['stok'] == 0 ? 'disabled':'' ?> required>
+                                                    <input type="hidden" name="produk_id" value="<?= $key['id_produk'] ?>">
                                                 </div>
                                                 <div class="col-8">
-                                                    <select class="form-control mini-form ukuran">
+                                                    <select class="form-control mini-form" name="ukuran" <?= $key['stok'] == 0 ? 'disabled':'' ?>>
                                                         <option>S</option>
                                                         <option>M</option>
                                                         <option>L</option>
@@ -81,7 +84,7 @@
                                                     <button id="<?= $key['id_produk'] ?>" class="addCart btn btn-block btn-warning mini-form" <?= $key['stok'] == 0 ? 'disabled':'' ?>><i class="fa fa-shopping-cart"></i></button>
                                                 </div>
                                             </div>
-                                        <!-- </form> -->
+                                        </form>
                                     </div>
                                     <div style="padding: 0px 6px 0px 6px;" class="card-footer text-right bg-warning">
                                         <small class="text-white mini-text"><i><?= $key['stok'] != 0 ? 'Jumlah Stok '.$key['stok']:'Stok Kosong' ?></i></small>
@@ -103,24 +106,46 @@
   <?php $this->load->view('client/partial/js') ?>
 
     <script>
-        $('.addCart').on("click", function() {
-
-            let send = {
-                id_produk: $(this).attr('id'),
-                ukuran: $(this).parents('.form-row').children('.col-8').children('.ukuran').val(),
-                jumlah: $(this).parents('.form-row').children('.col-12').children('.jumlah').val()
-            }
-
-            $.ajax({
-                url: "<?= base_url('request/addorder') ?>",
-                method: "post",
-                data: send,
-                dataType: "json",
-                success: function (result) {
-                    console.log(result);
-                }
+        const flashdata = $('.flash-data').attr('data');
+        if (flashdata) {
+            swal({
+            type: 'success',
+            title: 'Keranjang',
+            text: flashdata
             });
-        })
+        }
+
+        const error = $('.flash-error').attr('data');
+        if (error) {
+            swal({
+            type: 'error',
+            title: 'Keranjang',
+            text: error
+            });
+        }
+
+        $('.hapus').click(function(){
+            kode = $(this).attr('nilai');
+            $('.delete').attr('href', '<?= base_url('admin/produk/delete/') ?>'+kode);
+        });
+        // $('.addCart').on("click", function() {
+
+        //     let send = {
+        //         produk_id: $(this).attr('id'),
+        //         ukuran: $(this).parents('.form-row').children('.col-8').children('.ukuran').val(),
+        //         jumlah: $(this).parents('.form-row').children('.col-12').children('.jumlah').val()
+        //     }
+
+        //     $.ajax({
+        //         type: "post",
+        //         url: "<?= base_url('request/addorder') ?>",
+        //         data: send,
+        //         dataType: "json",
+        //         success: function (result) {
+        //             console.log(result);
+        //         }
+        //     });
+        // })
 
     </script>
 

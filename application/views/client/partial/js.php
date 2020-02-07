@@ -11,3 +11,4 @@
 
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/client/') ?>js/sb-admin-2.min.js"></script>
+<script src="<?= base_url('assets/dist/js/sweetalert.min.js') ?>"></script>

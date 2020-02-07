@@ -15,3 +15,4 @@
   <!-- Custom styles for this template-->
 <link href="<?= base_url('assets/client/') ?>css/sb-admin-2.css" rel="stylesheet">
 <link href="<?= base_url('assets/client/') ?>css/main.css" rel="stylesheet">
+<link rel="stylesheet" href="<?= base_url('assets/dist/css/sweetalert.css') ?>">

@@ -8,6 +8,11 @@
 	padding: 3px 5px 3px 5px;
 }
 
+.custom-title {
+	padding: 0px;
+	margin: 0px;
+}
+
 .empty {
 	opacity: 0.5;
 }
@@ -20,7 +25,9 @@
 	h3 {
 		font-size: small;
 	} */
-
+	.full-img {
+		height: 100%;
+	}
 	.mini-text {
 		font-size: x-small;
 		margin: 0px;
@@ -39,7 +46,7 @@
 		border-right: 0em !important;
 		border-color: #fff;
 	}
-	.card-body p {
+	.card-body span {
 		/* font-size: small; */
 		margin-top: 0px;
 		margin-bottom: 0px;
@@ -54,6 +61,15 @@
 
 	.card-body {
 		padding: 8px;
+	}
+
+	.mini-card-body {
+		padding: 2px 3px;
+	}
+
+	.mini-list {
+		padding-left: 0px;
+		padding-right: 0px;
 	}
 
 	.card-footer {

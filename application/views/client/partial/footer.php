@@ -1,7 +1,7 @@
  <!-- Footer -->
  <div id="sticky-footer" >
  		<footer class="bg-danger-2">
-	        <div class="container py-4">
+	        <div class="container py-4 mt-3">
 	            <div class="row">
 	              	<div class="col-md-4 mt-3">
                         <h5 class="text-white"><b>Tentang Kami</b></h5>

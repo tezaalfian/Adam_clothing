@@ -48,7 +48,7 @@
                   <td><?= $no++ ?></td>
                   <td><?= $key['nama_kategori'] ?></td>
                   <td>Rp. <?= number_format($key['harga']) ?></td>
-                  <td><?= $key['berat'] ?> gr</td>
+                  <td><?= $key['stok'] ?> pcs</td>
                   <td><?= substr($key['deskripsi'],0,50) ?>...</td>
                   <td><img src="<?= base_url('upload/produk/'.$key['foto_produk']) ?>" width="50" alt=""></td>
                   <td>

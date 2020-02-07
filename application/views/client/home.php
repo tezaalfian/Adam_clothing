@@ -58,9 +58,9 @@
                                 <img src="<?= base_url('upload/kategori/'.$key['foto']) ?>" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
-                                <p class="card-title title"><b>
+                                <span class="card-title custom-title"><b>
                                     <a href="<?= base_url('order/tipe/'.$key['id_kategori']) ?>" class="text-danger"><?= $key['nama_kategori']; ?></a>
-                                </b></p>
+                                </b></span><br>
                                 <small class="text-warning harga">Rp. <?= number_format($key['harga']) ?></small>
                             </div>
                             <div class="card-footer bg-danger"></div>

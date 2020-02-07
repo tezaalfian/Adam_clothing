@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+require_once 'C_client.php';
+
+class Home extends C_client {
 
 	public function __construct() {
 		parent::__construct();
@@ -18,6 +20,8 @@ class Home extends CI_Controller {
 				$data['show'] = false;
 			}
 		}
+		$data['keranjang'] = $this->keranjang;
+		// var_dump($_COOKIE);die;
 		$data['kategori'] = $this->m_kategori->getAll();
 		$this->load->view('client/home', $data);
 	}
