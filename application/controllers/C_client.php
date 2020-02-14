@@ -13,5 +13,8 @@ class C_client extends CI_Controller {
         if (isset($_COOKIE['kode'])) {
             $this->keranjang = $this->m_cart->listCart($_COOKIE['kode']);
         }
+        date_default_timezone_set('Asia/Jakarta');
+        $this->m_order->auto_del_cart();
+        $this->m_order->auto_del_order();
     }
 }

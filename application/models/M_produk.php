@@ -38,11 +38,12 @@ class M_produk extends My_model {
     public function add()
     {
         $post = $this->input->post();
+        $id = time();
         $data = [
-            'id_produk' => time(),
+            'id_produk' => $id,
             'kategori_id' => $post['kategori'],
             'stok' => $post['stok'],
-            'foto' => $this->uploadImage(time())
+            'foto' => $this->uploadImage($id)
         ];
 
         $this->db->insert($this->table,$data);

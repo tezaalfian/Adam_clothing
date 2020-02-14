@@ -54,8 +54,10 @@ class M_cart extends My_model {
         $this->db->select('*, produk.foto AS foto_produk');
         $this->db->from('produk');
         $this->db->join('order', 'produk.id_produk = order.produk_id');
+        $this->db->join('detail_order', 'order.kode = detail_order.order_kode');
         $this->db->join('kategori', 'produk.kategori_id = kategori.id_kategori');
         $this->db->where(['kode' => $id]);
+        $this->db->where(['detail_order.status' => 1]);
         return $this->db->get()->result_array();
     }
 }

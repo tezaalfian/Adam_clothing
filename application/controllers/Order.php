@@ -9,6 +9,8 @@ class Order extends C_client {
 		parent::__construct();
         $this->load->model('m_kategori');
         $this->load->model('m_produk');
+        $this->load->model('m_send');
+        $this->load->model('m_payment');
     }
     
     public function tipe($id)
@@ -54,7 +56,7 @@ class Order extends C_client {
                     $this->db->insert('order', $order);
                     $this->db->insert('detail_order', $detail);
                     $this->m_cart->minStok($post['produk_id'],(int)$produk['stok']-(int)$post['jumlah']);
-                    setcookie('kode',$order['kode'],time()+86400,'/');
+                    setcookie('kode',$order['kode'],strtotime('+1 day',time()),'/');
                     $this->session->set_flashdata('success', 'Berhasil ditambahkan ke keranjang!');
                     redirect('order/tipe/'.$id);
                 }
@@ -103,9 +105,46 @@ class Order extends C_client {
                 'total_akhir' => $total
             ];
             $this->m_order->editSome($id,$new);
+            
+            //mengolah input data pengiriman
+            $post = $this->input->post();
+            $this->form_validation->set_rules($this->m_send->rules());
+            if ($this->form_validation->run()) {
+                $order = [
+                    'pemesan' => $post['penerima'],
+                    'no_hp' => $post['no_hp'],
+                    'status' => 2
+                ];
+                
+                $this->m_send->add($id);
+                $this->m_order->editSome($id,$order);
+                setcookie('kode','',time()-3600,'/');
+                redirect('order/payment/'.$id);
+            }
             $data['order'] = $this->db->get_where('detail_order',['order_kode' => $id])->row_array();
-
             $this->load->view('client/order/send', $data);
+        }
+    }
+
+    public function payment($id)
+    {
+        $data['order'] = $this->db->get_where('detail_order',['order_kode' => $id, 'status' => 2])->row_array();
+        if (is_null($data['order'])) {
+            show_404();
+        }else {
+            $post = $this->input->post();
+            $data['total'] = $this->m_order->total($id);
+
+            //mengirimkan bukti bayar
+            if (empty($_FILES['foto']['name'])){
+                // $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">File tidak boleh kosong!</div>');
+            }else{
+                $this->m_payment->add($id);
+                $this->m_order->editSome($id,['status' => 3]);
+                redirect('home/search/'.$id);
+            }
+
+            $this->load->view('client/order/payment', $data);
         }
     }
 

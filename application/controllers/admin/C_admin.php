@@ -16,6 +16,9 @@ class C_admin extends CI_Controller {
             redirect(base_url('login'));
         }
         $this->user = $this->db->get_where('users',['id_users'=>$_SESSION['id']])->row_array();
+        date_default_timezone_set('Asia/Jakarta');
+        $this->m_order->auto_del_cart();
+        $this->m_order->auto_del_order();
     }
 
     // public function index()

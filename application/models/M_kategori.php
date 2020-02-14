@@ -29,13 +29,14 @@ class M_kategori extends My_model {
     public function add()
     {
         $post = $this->input->post();
+        $id = time();
         $data = [
-            'id_kategori' => time(),
+            'id_kategori' => $id,
             'nama_kategori' => ucfirst($post['kategori']),
             'harga' => $post['harga'],
             'berat' => $post['berat'],
             'deskripsi' => $post['deskripsi'],
-            'foto' => $this->uploadImage(time())
+            'foto' => $this->uploadImage($id)
         ];
 
         $this->db->insert($this->table,$data);

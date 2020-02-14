@@ -46,8 +46,8 @@ class Login extends CI_Controller {
 				if (md5($password) == $user['password']) {
                     $this->db->update('users',['is_online' => 1], ['id_users' => $user['id_users']]);
                     if (isset($remember)) {
-                        setcookie('id',$user['id_users'],time()+604800);
-                        setcookie('key',md5($user['username']),time()+604800);
+                        setcookie('id',$user['id_users'],strtotime('+7 day',time()));
+                        setcookie('key',md5($user['username']),strtotime('+7 day',time()));
                     }else{
 						setcookie('id',$user['id_users'],time()+180);
                         setcookie('key',md5($user['username']),time()+180);

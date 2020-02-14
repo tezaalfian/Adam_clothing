@@ -17,6 +17,12 @@
 	opacity: 0.5;
 }
 
+.no-border {
+	border-bottom: 0em !important;
+	border-color: #fff;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 @media (max-width: 400px) {
 	/* .logo {
 		height: 40px;

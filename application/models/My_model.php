@@ -4,6 +4,10 @@ class My_model extends CI_Model {
 
     protected $table;
 
+    public function __construct() {
+        date_default_timezone_set('Asia/Jakarta');
+    }
+
     public function select_all($table,$id)
     {
         return $this->db->get_where($table,['id'.$table =>$id])->row_array();
