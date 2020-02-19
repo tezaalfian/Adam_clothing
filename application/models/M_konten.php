@@ -21,9 +21,18 @@ class M_konten extends My_model {
         $this->db->insert($this->table,$data);
     }
 
-    public function edit($id)
+    public function editslide($id)
     {
-        
+        $post = $this->input->post();
+
+        if (!empty($_FILES["foto"]["name"])) {
+            $data['foto'] = $this->uploadImage($id);
+        } else {
+            $data['foto'] = $post["old_foto"];
+        }
+
+        $this->db->where(['id_konten' => $id]);
+        $this->db->update($this->table,$data);
     }
 
 }
