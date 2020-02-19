@@ -18,11 +18,11 @@ class M_kategori extends My_model {
 
             ['field' => 'harga',
             'label' => 'Harga',
-            'rules' => 'required|numeric'],
-            
-            ['field' => 'berat',
-            'label' => 'Berat',
             'rules' => 'required|numeric']
+            
+            // ['field' => 'berat',
+            // 'label' => 'Berat',
+            // 'rules' => 'required|numeric']
         ];
     }
 
@@ -34,7 +34,7 @@ class M_kategori extends My_model {
             'id_kategori' => $id,
             'nama_kategori' => ucfirst($post['kategori']),
             'harga' => $post['harga'],
-            'berat' => $post['berat'],
+            // 'berat' => $post['berat'],
             'deskripsi' => $post['deskripsi'],
             'foto' => $this->uploadImage($id)
         ];
@@ -48,7 +48,7 @@ class M_kategori extends My_model {
         $data = [
             'nama_kategori' => ucfirst($post['kategori']),
             'harga' => $post['harga'],
-            'berat' => $post['berat'],
+            // 'berat' => $post['berat'],
             'deskripsi' => $post['deskripsi']
         ];
 

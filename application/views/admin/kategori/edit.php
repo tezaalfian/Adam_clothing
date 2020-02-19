@@ -42,7 +42,7 @@
                             <span class="help-block"><?php echo form_error('kategori')?></span>
                         </div>
                     </div>
-                    <div class="form-group <?php echo form_error('berat') ? 'has-error':'' ?>">
+                    <!-- <div class="form-group <?php echo form_error('berat') ? 'has-error':'' ?>">
                         <label class="col-sm-2 control-label text-left">Berat</label>
                         <div class="col-sm-10">
                             <div class="input-group">
@@ -51,7 +51,7 @@
                             </div>
                             <span class="help-block"><?php echo form_error('berat')?></span>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label class="col-sm-2 control-label text-left">foto</label>
                         <div class="col-sm-10">

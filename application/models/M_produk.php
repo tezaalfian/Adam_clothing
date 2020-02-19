@@ -15,7 +15,7 @@ class M_produk extends My_model {
 
             ['field' => 'stok',
             'label' => 'Stok',
-            'rules' => 'required|numeric'],
+            'rules' => 'required'],
         ];
     }
 
@@ -32,6 +32,7 @@ class M_produk extends My_model {
         $this->db->select('kategori.*, produk.*, produk.foto AS foto_produk', FALSE);
         // $this->db->from('produk');
         $this->db->join('kategori', 'produk.kategori_id = kategori.id_kategori');
+        $this->db->order_by('kategori_id');
         return $this->db->get($this->table)->result_array();
     }
 

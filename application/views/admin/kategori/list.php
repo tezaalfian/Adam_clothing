@@ -35,7 +35,7 @@
                 <th>No</th>
                 <th>Nama Kategori</th>
                 <th>Harga</th>
-                <th>Berat</th>
+                <!-- <th>Berat</th> -->
                 <th>Deskripsi</th>
                 <th width="15%">Aksi</th>
               </tr>
@@ -47,7 +47,7 @@
                   <td><?= $no++ ?></td>
                   <td><?= $key['nama_kategori'] ?></td>
                   <td>Rp. <?= number_format($key['harga']) ?></td>
-                  <td><?= $key['berat'] ?> gr</td>
+                  <!-- <td><?= $key['berat'] ?> gr</td> -->
                   <td><?= substr($key['deskripsi'],0,50) ?>...</td>
                   <td>
                     <a type="button" href="<?= base_url('admin/kategori/edit/'.$key['id_kategori']); ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>

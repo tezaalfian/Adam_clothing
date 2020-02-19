@@ -7,12 +7,18 @@
 
 <title><?= SITE_NAME .": ".ucfirst($this->uri->segment(1)) ." - ". ucfirst($this->uri->segment(2)) ?></title>
 
-<!-- Favicons -->
-<link href="img/favicon.png" rel="icon">
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
-<link href="<?= base_url('assets/client/') ?>css/sb-admin-2.css" rel="stylesheet">
-<link href="<?= base_url('assets/client/') ?>css/main.css" rel="stylesheet">
-<link rel="stylesheet" href="<?= base_url('assets/dist/css/sweetalert.css') ?>">
+<!-- Bootstrap CSS File -->
+<link href="<?= base_url('assets/client/') ?>lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Libraries CSS Files -->
+<link href="<?= base_url('assets/client/') ?>lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="<?= base_url('assets/client/') ?>lib/animate/animate.min.css" rel="stylesheet">
+<link href="<?= base_url('assets/client/') ?>lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+<link href="<?= base_url('assets/client/') ?>lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="<?= base_url('assets/client/') ?>lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+<!-- Main Stylesheet File -->
+<link href="<?= base_url('assets/client/') ?>css/style.css" rel="stylesheet">

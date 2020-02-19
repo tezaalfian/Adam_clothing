@@ -3,8 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once 'C_client.php';
 
+
 class Order extends C_client {
     
+    // use Twilio\Rest\Client;
+
     public function __construct() {
 		parent::__construct();
         $this->load->model('m_kategori');
@@ -30,7 +33,9 @@ class Order extends C_client {
             if ((int)$produk['stok'] < 1) {
                 $this->session->set_flashdata('error', 'Stok barang habis!');
             }else{
-                if (isset($_COOKIE['kode'])) {
+                // if (isset($_COOKIE['kode'])) {
+                // var_dump($this->keranjang);die;
+                if (isset($this->keranjang)) {
                     $cart = $this->m_cart->cekKeranjang();
                     if (isset($cart)) {
                         $cekisi = $this->m_cart->cekIsi($post['ukuran'],$post['produk_id']);
@@ -188,4 +193,27 @@ class Order extends C_client {
             redirect('order/cart/'.$order['kode']);
         }
     }
+
+    public function del_order($id)
+	{
+		$this->m_order->cancel_order($id);
+		$this->session->set_flashdata('success','Pesanan anda berhasil dibatalkan!');
+		redirect(base_url());
+    }
+    
+    // public function notif()
+    // {
+    //     $id_akun = 'ACde4b5e8800842434dee6ce56aff09d79';
+    //     $token = '40399a8d46d65d708641aba66565e82c';
+    //     $twilio_number = "+16194576442";
+    //     $client = new Client($id_akun, $token);
+    //     $client->messages->create(
+    //         // Where to send a text message (your cell phone?)
+    //         '+6289631902592',
+    //         array(
+    //             'from' => $twilio_number,
+    //             'body' => 'I sent this message in under 10 minutes!'
+    //         )
+    //     );
+    // }
 }

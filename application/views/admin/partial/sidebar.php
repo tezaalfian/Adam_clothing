@@ -22,9 +22,6 @@
         <li class="<?php echo $this->uri->segment(1) == 'dashboard' ? 'active': '' ?>">
           <a href="<?= base_url('dashboard') ?>"><i class="fa fa-laptop"></i><span>Dashboard</span></a>
         </li>
-        <li class="<?php echo $this->uri->segment(1) == 'dashboard' ? 'active': '' ?>">
-          <a href="<?= base_url('dashboard') ?>"><i class="fa fa-shopping-cart"></i><span>Pesanan</span></a>
-        </li>
         <li class="treeview <?php echo $this->uri->segment(2) == 'kategori' || $this->uri->segment(2) == 'users' || $this->uri->segment(2) == 'produk' ? 'active': '' ?>" >
           <a href="#"><i class="fa fa-folder"></i> <span>Master Data</span>
             <span class="pull-right-container">
@@ -43,6 +40,21 @@
               <a href="<?= base_url('admin/users') ?>"><i class="fa fa-users"></i> Data User</a>
             </li>
             <?php  endif; ?>
+          </ul>
+        </li>
+        <li class="treeview <?= $this->uri->segment(2) == 'konten' ? 'active': '' ?>" >
+          <a href="#"><i class="fa fa-folder"></i> <span>Konten</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="<?php echo $this->uri->segment(3) == 'slide' ? 'active': '' ?>">
+              <a href="<?= base_url('admin/konten/slide') ?>"><i class="fa fa-photo"></i>Slide</a>
+            </li>
+            <li class="<?php echo $this->uri->segment(3) == 'medsos' ? 'active': '' ?>">
+              <a href="<?= base_url('admin/konten/medsos') ?>"><i class="fa fa-link"></i>Medsos</a>
+            </li>
           </ul>
         </li>
       </ul>

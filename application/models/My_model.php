@@ -5,6 +5,7 @@ class My_model extends CI_Model {
     protected $table;
 
     public function __construct() {
+        parent::__construct();
         date_default_timezone_set('Asia/Jakarta');
     }
 

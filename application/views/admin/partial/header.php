@@ -74,7 +74,7 @@
 
 	                <p><?= ucfirst($user['username']) ?>
 	                  <small>
-	                  	Sejak <?= date('d F Y', $user['id_users']) ?>
+	                  	Sejak : <?= date('d M Y', $user['id_users']) ?>
 	                  </small>
 	                </p>
 	              </li>
