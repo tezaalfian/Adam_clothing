@@ -22,7 +22,7 @@
         <li class="<?php echo $this->uri->segment(1) == 'dashboard' ? 'active': '' ?>">
           <a href="<?= base_url('dashboard') ?>"><i class="fa fa-laptop"></i><span>Dashboard</span></a>
         </li>
-        <li class="treeview <?php echo $this->uri->segment(2) == 'kategori' || $this->uri->segment(2) == 'users' || $this->uri->segment(2) == 'produk' ? 'active': '' ?>" >
+        <li class="treeview <?php echo $this->uri->segment(2) == 'kategori' || $this->uri->segment(2) == 'users' || $this->uri->segment(2) == 'testimoni' ? 'active': '' ?>" >
           <a href="#"><i class="fa fa-folder"></i> <span>Master Data</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -32,9 +32,12 @@
             <li class="<?php echo $this->uri->segment(2) == 'kategori' ? 'active': '' ?>">
               <a href="<?= base_url('admin/kategori') ?>"><i class="fa fa-bookmark"></i> Data Kategori</a>
             </li>
-            <li  class="<?php echo $this->uri->segment(2) == 'produk' ? 'active': '' ?>">
-              <a href="<?= base_url('admin/produk') ?>"><i class="fa fa-shirtsinbulk"></i> Data Produk</a>
+            <li  class="<?php echo $this->uri->segment(2) == 'testimoni' ? 'active': '' ?>">
+              <a href="<?= base_url('admin/testimoni') ?>"><i class="fa fa-shirtsinbulk"></i>Testimoni</a>
             </li>
+            <!-- <li  class="<?php echo $this->uri->segment(2) == 'produk' ? 'active': '' ?>">
+              <a href="<?= base_url('admin/produk') ?>"><i class="fa fa-shirtsinbulk"></i> Data Produk</a>
+            </li> -->
             <?php if($user['role_id'] == 2) : ?>
             <li  class="<?php echo $this->uri->segment(2) == 'users' ? 'active': '' ?>">
               <a href="<?= base_url('admin/users') ?>"><i class="fa fa-users"></i> Data User</a>

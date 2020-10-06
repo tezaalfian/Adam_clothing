@@ -1,5 +1,5 @@
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-<div id="preloader"></div>
+<!-- <div id="preloader"></div> -->
 <!-- JavaScript Libraries -->
 <script src="<?= base_url('assets/client/') ?>lib/jquery/jquery.min.js"></script>
 <script src="<?= base_url('assets/client/') ?>lib/jquery/jquery-migrate.min.js"></script>

@@ -58,7 +58,6 @@ class My_model extends CI_Model {
         // $config['max_height']           = 768;
         $this->load->library('upload');
         $this->upload->initialize($config);
-
         if ($this->upload->do_upload('foto')) {
             $gbr = $this->upload->data();
             //Compress Image
@@ -73,7 +72,6 @@ class My_model extends CI_Model {
             $config['new_image']= './upload/'.$this->table.'/'.$gbr['file_name'];
             $this->load->library('image_lib', $config);
             $this->image_lib->resize();
-
             return $this->upload->data("file_name");
             if ( ! $this->image_lib->resize()) {
                 echo $this->image_lib->display_errors();

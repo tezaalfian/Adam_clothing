@@ -11,6 +11,7 @@ class C_admin extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->model('m_kategori');
         $this->load->model('m_produk');
+        $this->load->model('m_testimoni');
         if(is_null($_SESSION['login'])){
             redirect(base_url('login'));
         }

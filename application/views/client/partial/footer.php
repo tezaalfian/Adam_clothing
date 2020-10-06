@@ -11,9 +11,9 @@
           <div class="col-lg-3 col-md-6 footer-contact">
             <h4>Contact Us</h4>
             <div class="social-links">
-              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-              <a href="#" class="whatsapp"><i class="fa fa-whatsapp"></i></a>
+              <?php foreach ($medsos as $key) : ?>
+                <a href="<?= $key['link'] ?>" class="<?= $key['nama_konten'] ?>"><i class="fa fa-<?= $key['nama_konten'] ?>"></i></a>
+              <?php endforeach; ?>
             </div>
 
           </div>

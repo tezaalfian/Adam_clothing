@@ -71,7 +71,7 @@
                     <div class="form-group <?php echo form_error('deskripsi') ? 'has-error':'' ?>">
                         <label class="col-sm-2 control-label text-left">Deskripsi</label>
                         <div class="col-sm-10">
-                            <textarea name="deskripsi" class="form-control" rows="3"></textarea>
+                            <textarea name="deskripsi" class="form-control" rows="8"></textarea>
                             <span class="help-block"><?php echo form_error('deskripsi')?></span>
                         </div>
                     </div>
